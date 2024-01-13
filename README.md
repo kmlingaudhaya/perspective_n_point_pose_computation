@@ -122,7 +122,8 @@ Open multiple terminals:
     ```
 
 Adjust the names, scripts, and dependencies based on your project's requirements.
-Here I have generated some random 2d points to simulate the process, but in real time it has to retrieve those 2d points from the object detected in the image.
+
+Also, here I have generated some random 2d points to simulate the process, but in real time it has to retrieve those 2d points from the object detected in the image.
 
 
 
