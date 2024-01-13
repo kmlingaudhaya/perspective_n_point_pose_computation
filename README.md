@@ -123,8 +123,5 @@ Open multiple terminals:
 
 Adjust the names, scripts, and dependencies based on your project's requirements.
 
-## Author
-
-- K M LINGAUDHAYA
 
 
