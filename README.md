@@ -1,4 +1,47 @@
-# perspective_n_point_pose_computation
+# Pose Estimation using PnP (Perspective-n-Point)
+
+## Overview
+
+This README provides a conceptual overview of Pose Estimation using PnP, focusing on the transformation matrix that converts 3D world points to 2D image points in the camera frame. It addresses the scenario where the transformation matrix is unknown but can be estimated using camera parameters and distortion coefficients.
+
+## Transformation Process
+
+Consider the following transformation process:
+
+### 1. World Points (3D Coordinates - x, y, z):
+
+The object is represented by 3D points in a world coordinate frame.
+
+### 2. Unknown Transformation Matrix:
+
+There exists a transformation matrix that converts these world points to 2D image points in the camera frame. However, the matrix is initially unknown.
+
+### 3. Camera Parameters and Distortion Coefficients:
+
+Camera parameters (intrinsic matrix) and distortion coefficients are known. These parameters define the camera's characteristics.
+
+### 4. Conversion to Camera Image Frame:
+
+Using the known camera parameters and distortion coefficients, the 3D world points are transformed into 2D image points in the camera image frame.
+
+### 5. Known Image Points (x, y):
+
+Corresponding 2D image points are also known and represent the projections of the world points onto the image plane.
+
+### 6. PnP Estimation:
+
+Pose Estimation using PnP is employed to estimate the unknown transformation matrix. This involves finding the rotation and translation vectors that best align the known 2D image points with the transformed 3D points.
+
+### 7. Transformation Matrix Obtained:
+
+The PnP algorithm yields a transformation matrix that accurately converts 3D world points to 2D image points in the camera frame.
+
+### 8. Pose Information:
+
+The rotation vector provides information about the yaw angle (orientation), and the translation vector gives insight into the distance to travel in the camera frame.
+
+For more info refer - https://docs.opencv.org/4.x/d5/d1f/calib3d_solvePnP.html
+
 
 # Robot Perception ROS Workspace
 
