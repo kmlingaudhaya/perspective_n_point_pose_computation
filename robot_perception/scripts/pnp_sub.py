@@ -13,21 +13,21 @@ class PoseEstimationNode:
 
         # Replace these with your actual values
         # Replace these values with your actual camera calibration parameters
-        fx = 500.0
-        fy = 500.0
-        cx = 320.0
-        cy = 240.0
+        fx = 1068.1300
+        fy = 1067.9301
+        cx = 1170.6700
+        cy = 626.9000
 
-        k1 = 0.1
-        k2 = 0.05
-        p1 = 0.01
-        p2 = -0.02
-        k3 = 0.0
+        k1 = -0.0447
+        k2 = 0.0147
+        p1 = 0.0005
+        p2 = -0.0002
+        k3 = -0.0079
         self.camera_matrix = np.array([[fx, 0, cx], [0, fy, cy], [0, 0, 1]])
         self.distortion_coefficients = np.array([k1, k2, p1, p2, k3])
 
         # Object points in the arrow mark board's coordinate system
-        self.object_points = np.array([[0, 0, 0], [30, 0, 0], [30, 20, 0], [0, 20, 0]], dtype=np.float32)
+        self.object_points = np.array([[0, 0, 0], [0, 5, 0], [12.68, 0, 0], [12.68, 5, 0]], dtype=np.float32)
 
         self.image_points_subscriber = rospy.Subscriber('/image_points', Float32MultiArray, self.image_points_callback)
 
