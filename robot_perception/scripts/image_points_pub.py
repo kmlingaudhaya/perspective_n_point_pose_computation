@@ -12,10 +12,10 @@ def image_points_publisher():
     while not rospy.is_shutdown():
         # Provide specific image points
         image_points = [
-            [1154.8, 451.4],
-            [1159.3, 406.9],
-            [1342.5, 458.5],
-            [1344.5, 417.8],  
+            [311.342, 173.313],
+            [312.485, 157.302],
+            [376.913, 176.363],
+            [378.82, 161.114],  
         ]
         print(image_points)
 

@@ -13,13 +13,13 @@ class PoseEstimationNode:
 
         # Replace these with your actual values
         # Replace these values with your actual camera calibration parameters
-        fx = 1068.1300
-        fy = 1067.9301
-        cx = 1170.6700
-        cy = 626.9000
+        fx = 1068.0500
+        fy = 1067.7200
+        cx = 1157.4301
+        cy = 633.6560
 
-        k1 = -0.0447
-        k2 = 0.0147
+        k1 = -0.0464
+        k2 = 0.0184
         p1 = 0.0005
         p2 = -0.0002
         k3 = -0.0079
@@ -41,15 +41,19 @@ class PoseEstimationNode:
         # Calculate the rotation matrix from the rotation vector
         R, _ = cv2.Rodrigues(rvecs)
 
-        # Extract yaw angle from rotation matrix
-        yaw_angle = np.degrees(np.arctan2(R[1, 0], R[0, 0]))
+        # Extract roll, pitch, and yaw angles from the rotation matrix
+        roll_angle, pitch_angle, yaw_angle = cv2.RQDecomp3x3(R)[0]
 
-        # Calculate the Euclidean distance in the x-y plane
-        distance_xy = np.linalg.norm(tvecs[0][:2])
+        # Display intermediate results for debugging
+        rospy.loginfo("Received Image Points:")
+        rospy.loginfo(image_points)
+        rospy.loginfo("Translation vector (X, Y, Z): {:.2f}, {:.2f}, {:.2f} units (e.g., centimeters)".format(*tvecs.ravel()))
+        rospy.loginfo("Rotation matrix:")
+        rospy.loginfo(R)
+        rospy.loginfo("Rotation angles (Roll, Pitch, Yaw): {:.2f}, {:.2f}, {:.2f} degrees".format(np.degrees(roll_angle),
+                                                                                                    np.degrees(pitch_angle),
+                                                                                                    np.degrees(yaw_angle)))
 
-        # Display the results
-        rospy.loginfo(f"Yaw angle to be turned: {yaw_angle:.2f} degrees")
-        rospy.loginfo(f"Distance to be traveled in x-y plane: {distance_xy:.2f} units (e.g., centimeters)")
 
 if __name__ == '__main__':
     try:
